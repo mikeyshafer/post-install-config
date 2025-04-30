@@ -2,19 +2,20 @@
 <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
 </p>
 
-<h1>osTicket - Prerequisites and Installation</h1>
-This demonstration outlines the prerequisites and installation of the open-source help desk ticketing system osTicket.<br />
+<h1>osTicket - Post-Install Configuration</h1>
+This demonstration outlines the next steps to setting up an osTicket environment after it is installed.<br />
 
 
 <h2>Video Demonstration</h2>
 
-- ### [YouTube: Initial osTicket Installation](https://youtu.be/p4DydgvwAOU)
+- ### [YouTube: osTicket Post-Install Configuration](https://youtu.be/p4DydgvwAOU)
 
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Internet Information Services (IIS)
+- osTicket Control Panel
 
 <h2>Operating Systems Used </h2>
 
@@ -32,7 +33,7 @@ This demonstration outlines the prerequisites and installation of the open-sourc
 
 <h2>Configure Roles</h2>
 <p>
-  <img src="https://github.com/user-attachments/assets/dbaac814-5c76-4aa6-8392-ae3de5eede2b" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/dbaac814-5c76-4aa6-8392-ae3de5eede2b" width="75%" alt="osTicket Config"/>
 </p>
 <p>
 Initial login will use your admin account that you created in the Help Desk setup. We will create a role for Supreme Admin, that will have access to all permissions. This will be done in the "Roles" page of the "Agent" tab in the Admin Panel.
@@ -41,7 +42,7 @@ Initial login will use your admin account that you created in the Help Desk setu
 
 <h2>Configure Departments</h2>
 <p>
-  <img src="" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/38660853-7405-4a95-9a63-b57cf1561b4c" width="75%" alt="osTicket Config"/>
 </p>
 <p>
 The Departments page is also accessed in the Agents tab. We will add a new Department named SysAdmins that will be a Top-Level Department.
@@ -50,45 +51,45 @@ The Departments page is also accessed in the Agents tab. We will add a new Depar
 
 <h2>Configure Teams</h2>
 <p>
-  <img src="https://github.com/user-attachments/assets/4ea07d50-57fb-4332-8ee8-4d05a95d5abb" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/4cbe129a-c8e7-48e6-a78f-3c56d47dfeb3" width="75%" alt="osTicket Config"/>
 </p>
 <p>
-Next, we need to install Visual C++ Redistributable and IIS URL Rewrite Module. These are 2 things we need on the device to make everything work together.
+The Teams page is also accessed in the Agents tab. We will add a new Team called "Online Banking
 </p>
 <br />
 
 <h2>Configure Agents</h2>
 <p>
-  <img src="" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/791e9024-3b2b-450b-b252-ddcb7b201fcb" width="75%" alt="osTicket Config"/>
 </p>
 <p>
-We will need to install PHP for Windows in order to be able to configure PHP Extensions for osTicket later. To do this, create a new directory in Windows(C:) named "PHP" and extract the zipped folder with the PHP installation files to it. This can be found at https://www.php.net/downloads. After that, we register the PHP version within the PHP Manager in IIS Manager by navigating to php-cgi.exe.
+In order for different Admins and Support staff to be able to log in, we need new Agents to be added. We can do this by clicking the Agents tab right next to Teams, and selecting "Add New Agent." In here we can put in all the info and logins for the Agent, as well as configure their access, permissions, and team assignment.
 </p>
 <br />
 
 <h2>Configure Users</h2>
 <p>
-  <img src="" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/85f5ec27-d9c0-4be3-8c0f-b9efbbab9fd3" width="75%" alt="osTicket Config"/>
 </p>
 <p>
-Before installing osTicket, it is best to already have an SQL server and UI installed. We'll be using MySQL as the server and HeidiSQL as the UI. When installing MySQL, I am using username and password "root". Inside of HeidiSQL, create a new database and name it osTicket.
+We will add a couple example Users who will be able to log in to the osTicket system to submit tickets of their own. We can do this by clicking over to the Agent panel, going into the Users tab, and selecting "Add User." After entering the user's info, I am setting their password for them and not requiring a password change on login, but in normal situations it would be a good idea to allow Users to set their password.
 </p>
 <br />
 
 <h2>Configure SLAs</h2>
 <p>
-  <img src="" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/b3f4b799-0d2f-4c80-8307-5282ac4f3c0f" width="75%" alt="osTicket Config"/>
 </p>
 <p>
-Now we are installing osTicket. To do this, open C: > inetput > wwwroot, then in your osTicket installation file zip folder, drag the "upload" folder into wwwroot. Rename "upload" to "osTicket". From this osTicket folder navigate to the "include" folder and rename "ost-sampleconfig.php" to "ost-config.php." At this point we can go into IIS Manager, stop and start the server to refresh it, then navigate to Sites > Default Web Site > osTicket, click Browse on the right hand side and it will open up osTicket in the browser.
+Under the Manage tab, we can navigate to the SLA page, where we will create 3 new SLA's to prioritize tickets into different levels of urgency. For our intents and purposes these are named Sev-A, Sev-B, and Sev-C.
 </p>
 <br />
 
 <h2>Configure Help Topics</h2>
 <p>
-  <img src="" width="60%" alt="osTicket Config"/>
+  <img src="https://github.com/user-attachments/assets/60ffad9c-32fb-4cb3-99ae-92d801bf8cff" width="75%" alt="osTicket Config"/>
 </p>
 <p>
-To set up some recommended extensions for osTicket, open up PHP Manager within IIS Manager, select Enable or disable an extension under PHP Extensions, and enable, php_imap.dll, php_intl.dll, and php_opcache.dll, then refresh the browser and click continue on osTicket.
+Help Topics are categories that Users can select when making tickets to help with organization on our end. We will make some new help topics by navigating to the "Help Topics" page under "Manage" adn entering each one individually.
 </p>
 <br />
